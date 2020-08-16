@@ -12,11 +12,9 @@ ip.t = 0;
 d = 0;
 while ip.t < 20
     if ip.t < 0.5
-       d = -1;
-       u = 1;
+       d = -1; 
     else
-       d = 0;
-       u = -1;
+       d = 0; 
     end
     
     ip.step(u,d); 
