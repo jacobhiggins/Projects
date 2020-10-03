@@ -4,9 +4,20 @@
 #include <vector>
 #include <fstream>
 #include <stdio.h>
+#include <map>
 
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
+
+// Define augment vector to include time int step
+struct aug_vec{
+    VectorXd state;
+    int t;
+
+    bool operator<(const aug_vec &w) const{
+        return (this->t < w.t);
+    }
+};
 
 const int x_num_discrete = 10; // Discretize each state values
 const int u_num_discrete = 10; // Discretize control inputs

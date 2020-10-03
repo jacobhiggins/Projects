@@ -13,13 +13,13 @@ struct aug_vec{
     VectorXd state;
     int t;
 
-    bool operator<(const aug_vec &w){
-        return true;
+    bool operator<(const aug_vec &w) const{
+        return (this->t < w.t);
     }
 };
-bool operator<(const aug_vec &w, const aug_vec &v){
-    return true;
-}
+// bool operator<(const aug_vec &w, const aug_vec &v){
+//     return true;
+// }
 
 int main(){
     std::map<aug_vec,double> costs;
@@ -33,9 +33,13 @@ int main(){
     a.state = v;
     a.t = 0;
     b.state = w;
-    b.t = 0;
+    b.t = 1;
     costs[a] = 1;
     costs[b] = -1;
 
-    std::cout << costs[a] << std::endl;
+    for (auto x : costs){
+        std::cout << x.first.state[0] << "\t" << x.second << std::endl;
+    }
+
+    std::cout << costs[b] << std::endl;
 }
